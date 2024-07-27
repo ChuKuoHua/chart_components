@@ -1,0 +1,65 @@
+.p-checkbox {
+    .p-checkbox-box.p-highlight {
+        border-color: $primary;
+        background-color: $primary;
+    }
+    &:not(.p-checkbox-disabled) {
+        .p-checkbox-box{
+            &.p-highlight:hover {
+                border-color: lighten($primary, 10%);
+                background: lighten($primary, 10%);
+                color: #fff;
+            }
+            &.p-focus{
+                box-shadow: 0 0 0 0.2rem lighten( $primary, 10% );
+                border-color: $primary;
+            }
+        }
+    }
+}
+
+.p-paginator .p-paginator-current{
+    color : $primary;
+    border: none;
+}
+.p-paginator .p-paginator-pages .p-paginator-page {
+    color : $primary;
+    &:not(.highlight):hover{
+        color : lighten($primary, 20%);
+    }
+
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background-color : $primary;
+    color : #fff;
+    &:focus{
+        box-shadow: 0 0 0 0.2rem lighten($primary, 10%);
+    }
+}
+.p-paginator-element.p-link {
+    color: $primary;
+}
+.p-paginator-element.p-disabled {
+    color : lighten($primary, 20%);
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight{
+    background: $primary;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: 0 0 0 10px.2rem lighten($primary, 20%);
+    border-color: $primary;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight.p-focus{
+    background: $primary;
+}
+
+.p-datatable .p-datatable-tbody > tr:focus {
+    outline: 0.15rem solid lighten( $primary, 10%);
+}
+
+
+// 提供使用  :row-class="rowClass" 吃 rowData 來修改 toggle
+.p-datatable .no-expander .p-row-toggler {
+    display: none;
+  }

@@ -1,0 +1,29 @@
+.keyboard_style {
+  z-index: 500;
+  top: 40px;
+  right: 12px;
+}
+.keyboard_offcanvas{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 301;
+}
+
+.required_icon {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: red;
+}
+.white_space_pre {
+  white-space: pre;
+}
+.word_break_all {
+  word-break: break-all;
+  white-space: pre-wrap;
+}

@@ -1,0 +1,15 @@
+@import "bootstrap/scss/functions";
+@import "../../../../../helpers/variables";
+
+$primaryLightColor: lighten($primary, 20%) !default;
+$primaryColor: $primary !default;
+$primaryDarkColor: darken($primaryColor, 20%) !default;
+$primaryDarkerColor: darken($primaryColor, 40%)  !default;
+$primaryTextColor: #ffffff !default;
+$primaryAccentBg: #cce5ff !default;
+
+$highlightBg: $primaryColor !default;
+$highlightTextColor: $primaryTextColor !default;
+$highlightFocusBg: darken($primaryColor, 5%) !default;
+
+@import '../_variables_light';
