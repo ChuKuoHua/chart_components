@@ -203,7 +203,7 @@ onMounted(() => {
             />
           </button>
         </div>
-        <BaseChart
+        <BaseChartComponent
           v-if="chartData.A.yData.length > 0"
           :id="'project1'"
           :title="chartData.A.title"
@@ -212,7 +212,7 @@ onMounted(() => {
           :y-axis-data="chartData.A.yData"
           :is-gearing="true"
         />
-        <BaseChart
+        <BaseChartComponent
           v-if="chartData.B.yData.length > 0"
           :id="'project2'"
           :title="chartData.B.title"
@@ -226,72 +226,74 @@ onMounted(() => {
         <h3 class="h5 border-bottom mb-0">
           逾期交貨訂單
         </h3>
-        <span class="fs-8">Đơn hàng giao trễ</span>
-        <table class="text-center w-100">
-          <thead>
-            <tr>
-              <th scope="col">
-                訂單號碼
-              </th>
-              <th scope="col">
-                預定交貨日
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="item of startWorkOrderData"
-              :key="item"
-            >
-              <td>
-                <button
-                  class="btn sn_btn py-1"
-                  @click="getKanBanEngData('due', item)"
-                >
-                  {{ item.sn }}
-                </button>
-              </td>
-              <td>
-                <p class="mb-0 px-3">
-                  {{ item.expected_delivery_date }}
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 class="h5 border-bottom mb-0 mt-3">
-          逾期交貨訂單(未開工)
-        </h3>
-        <span class="fs-8">Đơn hàng giao trễ(Đơn hàng chưa bắt đầu sản xuất)</span>
-        <table class="text-center w-100">
-          <thead>
-            <tr>
-              <th scope="col">
-                訂單號碼
-              </th>
-              <th scope="col">
-                預定交貨日
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="item of newWorkOrderData"
-              :key="item"
-            >
-              <td>
-                <p class="mb-0 text-center">
-                  {{ item.sn }}
-                </p>
-              </td>
-              <td>
-                <p class="mb-0 text-center">
-                  {{ item.expected_delivery_date }}
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div :class="{ 'table-h-scroll': startWorkOrderData.length > 6 }">
+          <table class="text-center w-100">
+            <thead>
+              <tr>
+                <th scope="col">
+                  訂單號碼
+                </th>
+                <th scope="col">
+                  預定交貨日
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="item of startWorkOrderData"
+                :key="item"
+              >
+                <td>
+                  <button
+                    class="btn sn_btn py-1"
+                    @click="getKanBanEngData('due', item)"
+                  >
+                    {{ item.sn }}
+                  </button>
+                </td>
+                <td>
+                  <p class="mb-0 px-3">
+                    {{ item.expected_delivery_date }}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 class="h5 border-bottom mb-0 mt-3">
+            逾期交貨訂單(未開工)
+          </h3>
+        </div>
+        <div :class="{ 'table-h-scroll': newWorkOrderData.length > 6 }">
+          <table class="text-center w-100">
+            <thead>
+              <tr>
+                <th scope="col">
+                  訂單號碼
+                </th>
+                <th scope="col">
+                  預定交貨日
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="item of newWorkOrderData"
+                :key="item"
+              >
+                <td>
+                  <p class="mb-0 text-center">
+                    {{ item.sn }}
+                  </p>
+                </td>
+                <td>
+                  <p class="mb-0 text-center">
+                    {{ item.expected_delivery_date }}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -300,5 +302,9 @@ onMounted(() => {
 <style scoped lang="scss">
 .sn_btn:hover {
   color: #0c4f5c;
+}
+.table-h-scroll {
+  height: 250px;
+  overflow-y: scroll;
 }
 </style>

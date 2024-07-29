@@ -153,6 +153,7 @@
     "yyyymmddhhmm": true,
     "yyyymmddhhmmss": true,
     "yyyymmddthhmm": true,
-    "zhTW": true
+    "zhTW": true,
+    "useSetPieChart": true
   }
 }

@@ -7,22 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AbnormalTemplate: typeof import('./components/tools/AbnormalTemplate.vue')['default']
     BaseChartComponent: typeof import('./components/echarts/BaseChartComponent.vue')['default']
-    BaseModal: typeof import('./components/modal/BaseModal.vue')['default']
     Calendar: typeof import('primevue/calendar')['default']
-    Column: typeof import('primevue/column')['default']
-    DataTable: typeof import('primevue/datatable')['default']
-    DeleteModal: typeof import('./components/modal/DeleteModal.vue')['default']
-    InputRound2: typeof import('./components/filter/InputRound2.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
-    MaterialsModal: typeof import('./components/materials/MaterialsModal.vue')['default']
-    NumKeyboard: typeof import('./components/tools/NumKeyboard.vue')['default']
-    PersonModal: typeof import('./components/personManageCompoent/PersonModal.vue')['default']
-    QrcodeModal: typeof import('./components/modal/QrcodeModal.vue')['default']
-    RestoreModal: typeof import('./components/modal/RestoreModal.vue')['default']
+    Pie: typeof import('./views/dashboard/kanban/Pie.vue')['default']
+    PieChart: typeof import('./views/dashboard/kanban/PieChart.vue')['default']
+    PieChartComponent: typeof import('./components/echarts/PieChartComponent.vue')['default']
+    ProjectKanban: typeof import('./views/dashboard/kanban/ProjectKanban.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    UpdatePwdModal: typeof import('./components/personalManage/UpdatePwdModal.vue')['default']
   }
 }

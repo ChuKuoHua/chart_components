@@ -160,7 +160,7 @@ export function useSetBaseChart (id, dom, title, xAxisData, yAxisData, zoomShow 
           rich: {
             a: {
               color: 'red',
-              fontSize: 24
+              fontSize: 16
             },
             b: {
               color: '#000',

@@ -18,8 +18,8 @@ const setTitle = ref('')
 const fullPage = ref(true)
 
 watch(webHeadSetList, () => {
-  document.title = useWebSetting.webSetList?.find(item => item.remark === '網站標題')?.value || '華億_MES'
-  setTitle.value = useWebSetting.webSetList?.find(item => item.remark === '系統登入表單標題')?.value || '華億_MES'
+  document.title = useWebSetting.webSetList?.find(item => item.remark === '網站標題')?.value || '圖表'
+  setTitle.value = useWebSetting.webSetList?.find(item => item.remark === '系統登入表單標題')?.value || '圖表'
 })
 onMounted(() => {
   const data = JSON.parse(localStorage.getItem('hyUser') || '{}')

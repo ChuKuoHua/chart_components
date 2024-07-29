@@ -28,7 +28,15 @@ const routes = [
             name: 'ProjectKanban',
             component: () => import('@/views/dashboard/kanban/ProjectKanban.vue'),
             meta: {
-              title: '工程看版 Bảng quản lý công việc'
+              title: '工程看版'
+            }
+          },
+          {
+            path: 'pie_chart',
+            name: 'PieChart',
+            component: () => import('@/views/dashboard/kanban/PieChart.vue'),
+            meta: {
+              title: '圓餅圖'
             }
           }
         ]

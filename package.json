@@ -16,7 +16,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.9.1",
     "dayjs": "^1.11.7",
-    "echarts": "^5.4.3",
+    "echarts": "^5.5.1",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
     "lodash-es": "^4.17.21",
@@ -53,4 +53,3 @@
     "vite-plugin-eslint": "^1.8.1"
   }
 }
-

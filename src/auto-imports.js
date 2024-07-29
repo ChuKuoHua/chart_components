@@ -130,6 +130,7 @@ declare global {
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSetBaseChart: typeof import('./composables/echarts/baseChart.js')['useSetBaseChart']
+  const useSetPieChart: typeof import('./composables/echarts/pieChart.js')['useSetPieChart']
   const useSlots: typeof import('vue')['useSlots']
   const useSystemPersonnelStore: typeof import('./stores/systemManagement/systemPersonnelStore.js')['useSystemPersonnelStore']
   const useUiStore: typeof import('./stores/base/uiStore.js')['useUiStore']
