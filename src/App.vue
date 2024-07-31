@@ -5,9 +5,10 @@ import VLoading from 'vue-loading-overlay'
 import { useLoadingStore } from '@/stores/base/loadingStore.js'
 import { useUserStore } from './stores/userStore'
 import { useWebSettingStore } from './stores/settingStore'
-import dayjs from 'dayjs'
+import { getCookie } from '@/utils/tools'
+// import dayjs from 'dayjs'
 
-const now = dayjs(dayjs().format('YYYY-MM-DD HH:mm:ss')).unix()
+// const now = dayjs(dayjs().format('YYYY-MM-DD HH:mm:ss')).unix()
 const router = useRouter()
 const loadingStore = useLoadingStore()
 const userStore = useUserStore()
@@ -22,12 +23,17 @@ watch(webHeadSetList, () => {
   setTitle.value = useWebSetting.webSetList?.find(item => item.remark === '系統登入表單標題')?.value || '圖表'
 })
 onMounted(() => {
-  const data = JSON.parse(localStorage.getItem('hyUser') || '{}')
-  if (data.id === undefined || now > data.expired) {
-    localStorage.removeItem('hyUser')
+  // const data = JSON.parse(localStorage.getItem('hyUser') || '{}')
+  const apiToken = JSON.parse(getCookie('apiToken')) || null
+  const expired = JSON.parse(getCookie('expired')) || null
+  const id = JSON.parse(getCookie('id')) || null
+  const name = JSON.parse(getCookie('name')) || null
+  if (!apiToken) {
+    // localStorage.removeItem('hyUser')
+    document.cookie = 'apiToken=; max-age=0; path=/'
     router.push('/login')
   }
-  const { apiToken, expired, id, name } = data
+  // const { apiToken, expired, id, name } = data
 
   userStore.setToken(apiToken)
   userStore.setExpires(expired)

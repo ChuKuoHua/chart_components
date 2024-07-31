@@ -1,5 +1,6 @@
 <script setup>
 import { Offcanvas } from 'bootstrap'
+import { getCookie, deleteAllCookies } from '@/utils/tools.js'
 
 const props = defineProps({
   setTitle: {
@@ -16,7 +17,7 @@ const currentTitle = computed(() => route.meta.title || '')
 const role = computed(() => userStore.roleGetter)
 const bsOffcanvas = ref(null)
 const sidebar = ref(null)
-const user = ref('')
+// const user = ref('')
 const userName = ref('')
 const openOffcanvas = () => {
   bsOffcanvas.value.show()
@@ -25,13 +26,15 @@ const closeOffcanvas = () => {
   bsOffcanvas.value.hide()
 }
 const logout = () => {
-  localStorage.removeItem('hyUser')
+  // localStorage.removeItem('hyUser')
+  deleteAllCookies()
   router.push('/login')
 }
 
 onMounted(async () => {
-  user.value = await JSON.parse(localStorage.getItem('hyUser') || 'null')
-  if (!user.value?.apiToken) {
+  // user.value = await JSON.parse(localStorage.getItem('hyUser') || 'null')
+  const apiToken = JSON.parse(getCookie('apiToken')) || null
+  if (!apiToken) {
     router.push('/login')
   }
   bsOffcanvas.value = new Offcanvas('#sidebar')
@@ -192,7 +195,7 @@ onUnmounted(() => {
               <li>
                 <RouterLink
                   class="text-decoration-none btn btn-primary-200 text-start py-3 w-100 rounded-0"
-                  to="/process_management/project_kanban"
+                  to="/chart_management/project_kanban"
                   @click="closeOffcanvas"
                 >
                   工程看板<br>
@@ -201,10 +204,19 @@ onUnmounted(() => {
               <li>
                 <RouterLink
                   class="text-decoration-none btn btn-primary-200 text-start py-3 w-100 rounded-0"
-                  to="/process_management/pie_chart"
+                  to="/chart_management/pie_chart"
                   @click="closeOffcanvas"
                 >
                   圓餅圖<br>
+                </RouterLink>
+              </li>
+              <li>
+                <RouterLink
+                  class="text-decoration-none btn btn-primary-200 text-start py-3 w-100 rounded-0"
+                  to="/chart_management/stacked_area_chart"
+                  @click="closeOffcanvas"
+                >
+                  堆疊面積圖<br>
                 </RouterLink>
               </li>
             </ul>

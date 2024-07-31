@@ -1,8 +1,9 @@
 import axios from 'axios'
-
 import { useLoadingStore } from '@/stores/base/loadingStore.js'
 import { useUserStore } from '@/stores/userStore.js'
 import router from '@/router/index.js'
+import { getCookie, deleteAllCookies } from '@/utils/tools.js'
+
 const baseUrl = import.meta.env.VITE_BASE_URL
 // create an axios instance
 const service = axios.create({
@@ -20,12 +21,13 @@ service.interceptors.request.use(
     const { setLoading } = loadingStore
 
     setLoading(true)
-    const user = JSON.parse(await localStorage.getItem('hyUser') || 'null')
+    const apiToken = JSON.parse(getCookie('apiToken')) || null
+    // const user = JSON.parse(await localStorage.getItem('hyUser') || 'null')
 
     // do something before request is sent
-    if (user) {
+    if (apiToken) {
     // 看狀況這邊是不用加上 Bearer 其他可能還是要
-      config.headers.Authorization = `Bearer ${user.apiToken}`
+      config.headers.Authorization = `Bearer ${apiToken}`
     } else {
       router.push('/login')
     }
@@ -68,11 +70,15 @@ service.interceptors.response.use(
     } else {
       const userStore = useUserStore()
       const { setId, setName, setRole } = userStore
-      const user = JSON.parse(await localStorage.getItem('hyUser') || 'null')
-      if (user) {
-        setId(user.id)
-        setName(user.name)
-        setRole(user.role)
+      const apiToken = JSON.parse(getCookie('apiToken')) || null
+      // const user = JSON.parse(await localStorage.getItem('hyUser') || 'null')
+      if (apiToken) {
+        const id = JSON.parse(getCookie('id'))
+        const name = JSON.parse(getCookie('name'))
+        const role = JSON.parse(getCookie('role'))
+        setId(id)
+        setName(name)
+        setRole(role)
       }
       return response
     }
@@ -83,7 +89,8 @@ service.interceptors.response.use(
     setLoading(false)
     console.error('err' + error) // for debug
     if (error.request?.status === 401) {
-      localStorage.removeItem('hyUser')
+      // localStorage.removeItem('hyUser')
+      deleteAllCookies()
       router.push('/login')
     }
     // do something

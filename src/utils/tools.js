@@ -16,7 +16,7 @@ export const getLocalDate = (time) => {
   return localDate.toLocaleDateString()
 }
 
-// 錯誤不自動取消
+// NOTE 錯誤不自動取消
 export const catchError = (fn, resetFn) => {
   return (...args) => {
     try {
@@ -58,11 +58,38 @@ export const catchError = (fn, resetFn) => {
     }
   }
 }
-// 檢查是否有不是數字的值，有的話就移除
+// NOTE 檢查是否有不是數字的值，有的話就移除
 export const checkNumber = (val) => {
   const reg = /^\d+$/
   if (!val.match(reg)) {
     return val.replace(/\D/g, '')
   }
   return val
+}
+// NOTE 取得 cookie
+export const getCookie = (name) => {
+  const cookieName = '; ' + document.cookie
+  const parts = cookieName.split('; ' + name + '=')
+  if (parts.length === 2) {
+    // 取出最後一筆陣列資料後分割，最後返回分割後第一個值
+    return parts.pop().split(';').shift()
+  } else {
+    return null
+  }
+}
+// NOTE 刪除所有 cookie
+export const deleteAllCookies = () => {
+  const data = new Date()
+  data.setTime(data.getTime() - 5000)
+  // 取得所有 cookies
+  const cookies = document.cookie.split(';')
+
+  // 取得所有 cookies name 並删除
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i]
+    const equalsPos = cookie.split('=')
+    const name = equalsPos[0].trim()
+    // 刪除 cookie`
+    document.cookie = `${name}=; expires=${data.toGMTString()}; path=/`
+  }
 }

@@ -34,8 +34,20 @@ const submitHandler = catchError(async () => {
       expired: expiresTime,
       role
     }
-    localStorage.setItem('hyUser', JSON.stringify(userData))
-    router.replace('/admin/process_start')
+    // localStorage.setItem('chartUser', JSON.stringify(userData))
+    const nowExpires = new Date()
+    nowExpires.setTime(nowExpires.getTime() + 1000 * 60 * 60 * 24) // 設置 cookie 有效期為1天
+
+    const setCookie = (key, value) => {
+      document.cookie = `${key}=${JSON.stringify(value)}; expires=${nowExpires.toUTCString()}; path=/chart`
+    }
+    setCookie('id', userData.id)
+    setCookie('name', userData.name)
+    setCookie('apiToken', userData.apiToken)
+    setCookie('expired', userData.expired)
+    setCookie('role', userData.role)
+
+    router.replace('/')
   }
 })
 </script>
