@@ -154,6 +154,11 @@
     "yyyymmddhhmmss": true,
     "yyyymmddthhmm": true,
     "zhTW": true,
-    "useSetPieChart": true
+    "useSetPieChart": true,
+    "pieData": true,
+    "useSetLineChart": true,
+    "stackedAreaData": true,
+    "getCookie": true,
+    "deleteAllCookies": true
   }
 }

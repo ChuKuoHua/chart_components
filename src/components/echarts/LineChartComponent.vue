@@ -1,5 +1,5 @@
 <script setup>
-import { useSetPieChart } from '@/composables/echarts/pieChart.js'
+import { useSetLineChart } from '@/composables/echarts/lineChart.js'
 const props = defineProps({
   id: {
     type: String,
@@ -13,7 +13,11 @@ const props = defineProps({
     type: String,
     default: '300px'
   },
-  axisData: {
+  xAxisData: {
+    type: Array,
+    default: () => []
+  },
+  yAxisData: {
     type: Array,
     default: () => []
   },
@@ -21,40 +25,27 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  isHalfChart: {
-    type: Boolean,
-    default: false
-  },
   isLegendShow: {
     type: Boolean,
     default: true
-  },
-  radius: {
-    type: Array,
-    default: () => ['40%', '60%']
   }
 })
 const elChart = ref(null)
 const getData = () => {
   if (elChart.value) {
-    useSetPieChart({
+    useSetLineChart({
       dom: elChart.value,
       title: props.title,
-      data: props.axisData,
-      isHalfChart: props.isHalfChart,
+      xAxisData: props.xAxisData,
+      yAxisData: props.yAxisData,
       legendShow: props.isLegendShow,
       radius: props.radius,
       isTitleShow: props.isTitleShow
     })
   }
 }
-// 監聽視窗寬度
-// const handleResize = (width) => {
-//   w.value = width || window.innerWidth
-// }
-// defineExpose({ handleResize })
 watchEffect(() => {
-  if (props.axisData.length > 0) {
+  if (props.xAxisData.length > 0 && props.yAxisData.length > 0) {
     getData()
   }
 })
