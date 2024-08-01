@@ -26,3 +26,18 @@ export const stackedAreaData = [
     stack: 'total'
   }
 ]
+
+export const barStackedData = [
+  {
+    name: '良品',
+    value: [220, 182, 191, 234, 290, 330, 310],
+    color: '#A888A0',
+    stack: 'Ad'
+  },
+  {
+    name: '不良品',
+    value: [150, 232, 201, 154, 190, 330, 410],
+    color: '#E8B287',
+    stack: 'Ad'
+  }
+]

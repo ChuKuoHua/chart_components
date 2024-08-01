@@ -159,6 +159,8 @@
     "useSetLineChart": true,
     "stackedAreaData": true,
     "getCookie": true,
-    "deleteAllCookies": true
+    "deleteAllCookies": true,
+    "barStackedData": true,
+    "useSetBarStartChart": true
   }
 }

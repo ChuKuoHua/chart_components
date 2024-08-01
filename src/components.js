@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BarStackChart: typeof import('./views/dashboard/chart/BarStackChart.vue')['default']
+    BarStackedChartComponent: typeof import('./components/echarts/BarStackedChartComponent.vue')['default']
     BaseChart: typeof import('./components/echarts/BaseChart.vue')['default']
     BaseChartComponent: typeof import('./components/echarts/BaseChartComponent.vue')['default']
     Calendar: typeof import('primevue/calendar')['default']

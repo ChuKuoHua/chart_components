@@ -14,7 +14,6 @@ const route = useRoute()
 const router = useRouter()
 const { setOpenOffCanvas } = uiStore
 const currentTitle = computed(() => route.meta.title || '')
-const role = computed(() => userStore.roleGetter)
 const bsOffcanvas = ref(null)
 const sidebar = ref(null)
 // const user = ref('')
@@ -147,48 +146,20 @@ onUnmounted(() => {
         class="offcanvas-body px-0 pt-0"
       >
         <ul class="list-unstyled">
-          <li v-show="role === 'admin' || role === 'system'">
-            <button
-              class="text-decoration-none btn btn-primary text-start py-3 w-100 rounded-0"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#system"
-              aria-controls="system"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              系統管理
-            </button>
-            <ul
-              id="system"
-              class="collapse list-unstyled"
-              data-bs-parent="#sidebarAccordion"
-            >
-              <li>
-                <RouterLink
-                  class="text-decoration-none btn btn-primary-200 text-start py-3 w-100 rounded-0"
-                  to="/system_management/personnel"
-                  @click="closeOffcanvas"
-                >
-                  人員資料維護
-                </RouterLink>
-              </li>
-            </ul>
-          </li>
           <li>
             <button
               class="text-decoration-none btn btn-primary text-start py-3 w-100 rounded-0"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#process"
-              aria-controls="process"
+              data-bs-target="#chart"
+              aria-controls="chart"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              現場生產管理<br>
+              圖表管理<br>
             </button>
             <ul
-              id="process"
+              id="chart"
               class="collapse list-unstyled"
               data-bs-parent="#sidebarAccordion"
             >
@@ -217,6 +188,15 @@ onUnmounted(() => {
                   @click="closeOffcanvas"
                 >
                   堆疊面積圖<br>
+                </RouterLink>
+              </li>
+              <li>
+                <RouterLink
+                  class="text-decoration-none btn btn-primary-200 text-start py-3 w-100 rounded-0"
+                  to="/chart_management/bar_stacked_chart"
+                  @click="closeOffcanvas"
+                >
+                  堆疊面積長條圖<br>
                 </RouterLink>
               </li>
             </ul>

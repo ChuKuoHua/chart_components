@@ -46,6 +46,14 @@ const routes = [
             meta: {
               title: '堆疊面積圖'
             }
+          },
+          {
+            path: 'bar_stacked_chart',
+            name: 'BarStackedChart',
+            component: () => import('@/views/dashboard/chart/BarStackChart.vue'),
+            meta: {
+              title: '堆疊面積長條圖'
+            }
           }
         ]
       }
