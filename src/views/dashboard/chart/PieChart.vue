@@ -24,6 +24,7 @@ onMounted(() => {
           :h="'450px'"
           :axis-data="chartData.data"
           :is-gearing="true"
+          :border-style="[5, 2]"
         />
       </div>
       <div class="col-6">
@@ -39,6 +40,7 @@ onMounted(() => {
               :is-legend-show="false"
               :is-title-show="false"
               :radius="['20%', '40%']"
+              :border-style="[3, 2]"
             />
           </div>
           <div class="col-12">

@@ -29,6 +29,10 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
+  borderStyle: {
+    type: Array,
+    default: () => []
+  },
   radius: {
     type: Array,
     default: () => ['40%', '60%']
@@ -44,6 +48,7 @@ const getData = () => {
       isHalfChart: props.isHalfChart,
       legendShow: props.isLegendShow,
       radius: props.radius,
+      borderStyle: props.borderStyle,
       isTitleShow: props.isTitleShow
     })
   }

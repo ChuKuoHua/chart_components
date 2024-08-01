@@ -42,7 +42,7 @@ const setSeries = (data) => {
 }
 
 export function useSetPieChart ({
-  dom, title, data, isHalfChart, legendShow, radius, isTitleShow
+  dom, title, data, isHalfChart, legendShow, radius, borderStyle, isTitleShow
 }) {
   let myChart = getInstanceByDom(dom) // 檢查 DOM 是否存在
   // 不存在就初始畫圖表
@@ -83,11 +83,11 @@ export function useSetPieChart ({
         type: 'pie',
         radius,
         // avoidLabelOverlap: false,
-        // itemStyle: {
-        //   borderRadius: 5,
-        //   borderColor: '#fff',
-        //   borderWidth: 3
-        // },
+        itemStyle: {
+          borderRadius: borderStyle[0] || 0,
+          borderColor: '#fff',
+          borderWidth: borderStyle[1] || 2
+        },
         // label: {
         //   show: false,
         //   position: 'center'
